@@ -18,7 +18,7 @@
 
 
 
-				<div class="flex flex-row place-content-center gap-x-5 lowercase text-3xl font-[300] font-header">
+				<div class="md:flex flex-row place-content-center gap-x-5 lowercase text-3xl font-[300] font-header hidden">
 					<RouterLink to="/" class="link-underline">home</RouterLink>
 					<RouterLink to="/index" class="link-underline">index</RouterLink>
 				</div>
