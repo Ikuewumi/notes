@@ -52,7 +52,7 @@
 	}
 
 	.cols>* {
-		grid-column: span var(--col-width, 6);
+		grid-column: var(--col-start, 2) / span var(--col-width, 6);
 	}
 
 	.cols>*:first-child {
@@ -61,6 +61,14 @@
 
 	.cols>*:last-child {
 		grid-column: span var(--col-width, 6) / calc(var(--col-start, 2) * -1);
+	}
+
+	.grid-container {
+		@apply grid gap-5 md:grid-cols-2
+	}
+
+	.page-grid {
+		@apply subgrid cols mt-5 gap-y-5
 	}
 
 

@@ -14,7 +14,7 @@
 					<use href="#author"></use>
 				</svg>
 
-				<cite>By <span class="font-header not-italic">Charlie Puth</span></cite>
+				<span class="font-header not-italic">Charlie Puth</span>
 			</span>
 			<span class="flex flex-row gap-x-2 text-[1.1rem] font-bold text-[#636e72]">
 				<svg viewBox="0 0 30 30" class="w-[16px] fill-[#636e72]">

@@ -26,9 +26,17 @@
 
 
 
-				<button
-					class="justify-self-end ml-auto font-header px-6 py-2 bg-slate-600 hover:bg-slate-500 text-white rounded-sm">Sign
-					Up</button>
+				<button @click="logIn" v-if="!user?.user?.uid"
+					class="justify-self-end ml-auto font-header px-5 md:px-8 py-2 bg-slate-600 hover:bg-slate-500 text-white rounded-sm">Log
+					In</button>
+
+
+
+
+				<!-- TODO Enter the  "user?.user?.photoURL!" in the src -->
+				<RouterLink v-else to="/you" class="justify-self-end"><img src="../assets/ig/003.jpg"
+						class="w-[40px] object-cover aspect-square  font-header  text-white rounded-sm outline-slate-200 -outline-offset-4 outline-4">
+				</RouterLink>
 
 
 			</div>
@@ -41,6 +49,10 @@
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import { logIn } from "../composables/auth";
+import { useUser } from "../stores/user";
+
+const user = useUser()
 </script>
 
 <style scoped>

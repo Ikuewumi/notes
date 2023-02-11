@@ -5,6 +5,9 @@ module.exports = {
     extend: {
 			fontSize: {
 				base: '1.3rem'
+			},
+			fontFamily: {
+				sans:['DM Sans']
 			}
 		},
   },

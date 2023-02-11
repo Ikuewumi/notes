@@ -1,0 +1,52 @@
+@tailwind utilities;
+
+@layer utilities {
+
+	.article-page {
+		@apply grid gap-2 font-sans text-base
+	}
+
+	.article-page h1,
+	.article-page h2,
+	.article-page h3,
+	.article-page h4,
+	.article-page h5,
+	.article-page h6 {
+		font-family: 'Unbounded';
+	}
+
+	.article-page h1 {
+		font-size: clamp(1.65rem, 1.65rem + 1vw, 1.9rem);
+	}
+
+	.article-page h2 {
+		font-size: clamp(1.50rem, 1.60rem + 1vw, 1.7rem);
+	}
+
+	.article-page h3 {
+		font-size: clamp(1.45rem, 1.55rem + 1vw, 1.65rem);
+	}
+
+	.article-page h1 {
+		font-size: clamp(1.4rem, 1.5rem + 1vw, 1.45rem);
+	}
+
+	.article-page h1 {
+		font-size: clamp(1.35rem, 1.45rem + 1vw, 1.35rem);
+	}
+
+	.article-page h1 {
+		font-size: clamp(1.65rem, 1.65rem + 1vw, 1.9rem);
+	}
+
+	.article-page ul {
+		@apply list-disc list-inside
+	}
+
+
+	.article-page ol {
+		@apply list-decimal list-inside
+	}
+
+
+}
