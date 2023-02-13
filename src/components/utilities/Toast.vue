@@ -18,11 +18,11 @@ const toast = useToast()
 #toast {
 	transition: 1s;
 	transform-origin: left;
-	transform: translate(-120%) scaleX(0);
+	transform: translateX(-120%);
 
 
 	&.active {
-		transform: translate(0%) scaleX(1);
+		transform: translateX(0%);
 	}
 
 

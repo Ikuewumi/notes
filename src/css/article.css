@@ -64,6 +64,32 @@
 	}
 
 
+	.article-page a {
+		position: relative;
+		color: #636e72;
+		--h-line: 2px;
+		isolation: isolate;
+		z-index: 2;
+	}
+
+	.article-page a:hover {
+		color: #000;
+		--h-line: 100%;
+	}
+
+	.article-page a::after {
+		content: "";
+		z-index: -1;
+		transition: 0.2s;
+		position: absolute;
+		inset: auto auto 0 0;
+		width: var(--w-line, 100%);
+		height: var(--h-line, 2px);
+		background: var(--clr-line, #fd79a8);
+	}
+
+
+
 	.article-page blockquote {
 		@apply bg-[#fd79a820] px-4 py-2 border-solid border-l-4 border-l-[#e84393];
 	}
