@@ -5,6 +5,7 @@ const routes = [
   { path: '/index', component: () => import('../views/main/Index.vue') },
   { path: '/you', component: () => import('../views/user/You.vue') },
   { path: '/create', component: () => import('../views/user/CreateNote.vue') },
+  { path: '/dev', component: () => import('../views/Dev.vue') },
 ] as RouteRecordRaw[]
 
 const router = createRouter({

@@ -1,6 +1,6 @@
 <template>
 
-	<div class="h-[300px] outline outline-2 bg-white grid place-content-center text-center gap-y-2 px-3"
+	<div class="h-[300px] outline outline-2 bg-white grid place-content-center text-center rounded-sm gap-y-2 px-3"
 		:class="storeNotes.$state.dropping ? '!outline-dashed !outline-[#fd79a8] !outline-5' : ''"
 		@dragover="evts.dragOverEvt" @drop="evts.dropEvt" @dragend="evts.dragEndEvt" @dragenter="evts.dragEnterEvt"
 		@dragleave="evts.dragExitEvt">
