@@ -1,12 +1,14 @@
 <template>
 	<div class="page-grid">
-		<h1 class="font-header text-center text-3xl font-semibold uppercase underline">Playground</h1>
+		<h1 class="font-header text-center text-3xl font-semibold uppercase underline hidden">Playground</h1>
+		<Metadata />
 		<section class="article-page" v-html="converter.makeHtml(sampleMd)"></section>
 		<Loader />
 	</div>
 </template>
 
 <script setup lang="ts">
+import Metadata from '../components/utilities/Metadata.vue';
 import Loader from '../components/utilities/Loader.vue';
 import { converter, sampleMd } from '../composables/md';
 </script>

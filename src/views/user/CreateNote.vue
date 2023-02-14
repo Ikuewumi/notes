@@ -111,6 +111,8 @@ import Preview from "../../components/create/Preview.vue";
 import { checkMetadata } from "../../composables/create";
 import { useNotes } from "../../stores/note";
 import { watch } from "vue";
+import { asyncLoad } from "../../composables/toast";
+import { zMetadata } from "../../composables/z";
 const storeNotes = useNotes()
 const inputFile = $ref(null as unknown as HTMLInputElement)
 
@@ -174,10 +176,13 @@ const categories = {
 	},
 	async toContent() {
 
-		const metadata = await checkMetadata(ime)
-		console.log(metadata)
-		booleans.changeCategory('content')
-		booleans.change('text')
+		await asyncLoad(async () => {
+			const metadata = await zMetadata.parseAsync(ime)
+			console.log(metadata)
+			booleans.changeCategory('content')
+			booleans.change('text')
+		})
+
 
 
 	}

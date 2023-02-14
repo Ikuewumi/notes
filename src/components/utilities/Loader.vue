@@ -1,7 +1,7 @@
 <template>
 	<div id="loader"
 		class="bg-[#fd79a8] w-[min(300px,90vw)] px-4 py-3 rounded-md shadow-lg shadow-[#fd79a870] text-[1.25rem] fixed inset-auto bottom-[20px] flex flex-row flex-wrap items-center align-center gap-3 left-[min(20px,5vw)] z-50 text-white"
-		role="alert">
+		:class="toast.loading ? 'active' : ''" role="alert">
 		<svg class="w-[50px] fill-none stroke-[10px]" viewBox="-10 -10 160 160">
 			<circle data-transparent cx="70" cy="70" r="70" class="stroke-[#00000040] shadow-lg shadow-[#fd79a8]"></circle>
 			<circle data-loader cx="70" cy="70" r="70" class="stroke-[#55efc4]"></circle>
