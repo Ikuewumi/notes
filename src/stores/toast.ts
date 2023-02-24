@@ -15,7 +15,7 @@ export const useToast = defineStore('useToast', {
 			this.msg = t
 		},
 
-		message(t: string, time = 1000) {
+		message(t: string, time = 5000) {
 			clearInterval(this.int)
 			this.changeMsg(t)
 			this.int = setTimeout(() => { this.msg = '' }, time)

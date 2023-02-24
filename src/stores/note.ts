@@ -1,4 +1,5 @@
 import {defineStore} from 'pinia';
+import {zMetadata} from "../composables/z";
 
 
 export const useNotes = defineStore('useNotes', {
@@ -6,7 +7,14 @@ export const useNotes = defineStore('useNotes', {
 	state: () => {
 		return {
 			dropping: false,
-			text: ''
+			text: '',
+			metadata: {
+				title: '',
+				excerpt: '',
+				tags: '',
+				categories: '',
+				image: ''
+			}
 		}
 	},
 
@@ -14,6 +22,11 @@ export const useNotes = defineStore('useNotes', {
 	actions: {
 		changeText(t: string) {
 			this.text = t
+		},
+
+		storeMetadata(obj: any) {
+			const m = zMetadata.parse(obj)
+			this.metadata = m
 		}
 	},
 

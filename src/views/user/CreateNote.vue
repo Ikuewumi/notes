@@ -30,7 +30,7 @@
 					Content
 				</h2>
 
-				<p class="text-[1.2rem]">Add your content. Use any method. For writing markdown articles, we recommend <a
+				<p class="text-[1.2rem]">Add your content. Write directly, Or upload a markdown file. To write markdown articles, we recommend <a
 						href="https://stackedit.io/" class="link-underline" style="--h-line:4px;" target="_blank">StackEdit</a></p>
 
 				<nav class="flex flex-row flex-wrap w-fit mt-3 border-solid border-b-2" v-if="booleans.category.content">
@@ -89,18 +89,21 @@
 
 
 			<button
-				class="justify-self-end ml-auto font-header px-7 md:px-9 py-3 bg-slate-600 hover:bg-slate-500 text-white rounded-sm flex flex-row">Next</button>
+				class="btn-right">Next</button>
 
 		</form>
 
 
 		<section class="grid" v-if="booleans.category.content">
 
-			<Textarea v-if="booleans.data.text" />
-			<Dropzone v-if="booleans.data.dropzone" />
-			<Preview v-if="booleans.data.preview" />
+			<Textarea v-if="booleans.data.text" @to-preview="toPreview" />
+			<Dropzone v-if="booleans.data.dropzone" @to-preview="toPreview" />
+			<Preview v-if="booleans.data.preview" @to-confirm="confirmDialog = true" />
+		
 		</section>
 
+
+		<Dialog text="Save this note?" :d="confirmDialog" @no="confirmDialog=false" @yes="" />
 	</main>
 </template>
 
@@ -108,6 +111,7 @@
 import Textarea from "../../components/create/Textarea.vue";
 import Dropzone from "../../components/create/Dropzone.vue";
 import Preview from "../../components/create/Preview.vue";
+import Dialog from "../../components/utilities/Dialog.vue";
 import { checkMetadata } from "../../composables/create";
 import { useNotes } from "../../stores/note";
 import { watch } from "vue";
@@ -145,15 +149,7 @@ const booleans = $ref({
 })
 
 
-watch(storeNotes, (n, o) => {
-
-
-	if (n.text === o.text) return
-	console.log('changed text in store')
-	// console.log()
-
-	booleans.change("text");
-})
+const toPreview = () => booleans.change('preview');
 
 
 // IME short of Initial Metadata Elements to get the most updated data from the form
@@ -166,6 +162,9 @@ const ime = $ref({
 })
 
 
+let confirmDialog = $ref(false)
+
+
 
 const categories = {
 
@@ -174,10 +173,12 @@ const categories = {
 
 
 	},
+
 	async toContent() {
 
 		await asyncLoad(async () => {
 			const metadata = await zMetadata.parseAsync(ime)
+			storeNotes.storeMetadata(metadata)
 			console.log(metadata)
 			booleans.changeCategory('content')
 			booleans.change('text')
@@ -185,12 +186,18 @@ const categories = {
 
 
 
-	}
+	},
 
+
+	confirm() {
+		confirmDialog = true
+	}
 
 
 }
 
+
+// const dialogConfirm
 
 </script>
 

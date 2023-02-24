@@ -40,7 +40,7 @@ const dragEndEvt = (e: DragEvent) => {
 }
 
 
-const dropEvt = (e: DragEvent) => {
+const dropEvt = (e: DragEvent, emit: any) => {
 	e.preventDefault()
 	storeNotes.dropping = false
 
@@ -56,9 +56,11 @@ const dropEvt = (e: DragEvent) => {
 			const file = item.getAsFile();
 			const text = await getTextFromFile(await checkFile(file!))
 
-			console.log(text)
+			console.log('changed')
 
 			storeNotes.changeText(text)
+
+			emit('to-preview')
 
 
 
