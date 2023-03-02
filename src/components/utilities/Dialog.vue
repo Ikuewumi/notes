@@ -1,5 +1,5 @@
 <template>
-    <div data-c-dialog :class="d ? 'active' : ''">
+    <div data-c-dialog :class="d ? 'active' : ''" @click.self="emit('no')">
         <dialog class="bg-[#fd79a8] w-[min(350px,98vw)] px-4 py-3 rounded-md shadow-lg shadow-[#fd79a870] text-[13px] md:text-[1rem] fixed inset-auto bottom-[20px] grid items-center align-center gap-3 left-[min(20px,5vw)] z-50 text-white">
             <p>{{ text }}</p>
             <div class="justify-self-end flex gap-2">
