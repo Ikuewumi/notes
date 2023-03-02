@@ -1,7 +1,7 @@
 import { useToast } from "../stores/toast"
 // const store = useToast()
 
-export const asyncLoad = async(func: () => Promise<any>, msg: string = "Loading") => {
+export const asyncLoad = async(func: () => Promise<any>, msg = "Loading") => {
 
 	try {
 		useToast().startLoad()
