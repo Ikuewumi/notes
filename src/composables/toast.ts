@@ -3,14 +3,18 @@ import { useToast } from "../stores/toast"
 
 export const asyncLoad = async(func: () => Promise<any>, msg = "Loading") => {
 
+	const toast = useToast()
+
 	try {
-		useToast().startLoad()
-		return func()
+		toast.startLoad()
+		const result = await func()
+		return result
 	} catch(e) {
+		console.log('toasting')
 		console.error('An error occurred')
-		useToast().changeMsg(String(e))
+		toast.message(String(e))
 	} finally {
-		useToast().stopLoad()
+		toast.stopLoad()
 	}
 
 } 

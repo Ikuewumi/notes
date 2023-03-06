@@ -1,5 +1,5 @@
 <template>
-	<div v-if="storeNotes.text" class="contents">
+	<div v-if="storeNotes.currentNote.content" class="contents">
 		<section class="article-page" v-html="previewMd"></section>
 		<button class="mt-5 btn-right" @click="emit('to-confirm')">Save</button>
 	
@@ -22,7 +22,7 @@ const emit = defineEmits<{
 	(event: 'to-confirm'): void
 }>()
 const previewMd = $computed(() => {
-	return converter.makeHtml(storeNotes.text)
+	return converter.makeHtml(storeNotes.currentNote.content)
 })
 </script>
 

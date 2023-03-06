@@ -7,7 +7,7 @@
 			<circle data-loader cx="70" cy="70" r="70" class="stroke-[#55efc4]"></circle>
 		</svg>
 
-		<span class="">
+		<span class="text-[1.35rem]">
 			Loading...
 		</span>
 	</div>

@@ -4,10 +4,10 @@
 
 		<section class="grid gap-y-6">
 			<nav class="flex flex-row w-fit text-[#2d3436] border-b-2 border-solid">
-				<span class="cursor-pointer lowercase font-header px-3 py-2 link-form-start"
-					:class="booleans.category.metadata ? 'active' : ''" @click="categories.toMetadata">Metadata</span>
-				<span class="cursor-pointer lowercase font-header px-3 py-2 link-form-start border-l-2 border-solid"
-					:class="booleans.category.content ? 'active' : ''" @click="categories.toContent">Content</span>
+				<button class="cursor-pointer lowercase font-header px-3 py-2 link-form-start" title="metadata"
+					:class="booleans.category.metadata ? 'active' : ''" @click="categories.toMetadata">Metadata</button>
+				<button class="cursor-pointer lowercase font-header px-3 py-2 link-form-start border-l-2 border-solid" title="content"
+					:class="booleans.category.content ? 'active' : ''" @click="categories.toContent">Content</button>
 			</nav>
 		</section>
 
@@ -31,31 +31,31 @@
 				</h2>
 
 				<p class="text-[1.2rem]">Add your content. Write directly, Or upload a markdown file. To write markdown articles, we recommend <a
-						href="https://stackedit.io/" class="link-underline" style="--h-line:4px;" target="_blank">StackEdit</a></p>
+						href="https://stackedit.io/" rel="no-refferer" class="link-underline" style="--h-line:4px;" target="_blank">StackEdit</a></p>
 
 				<nav class="flex flex-row flex-wrap w-fit mt-3 border-solid border-b-2" v-if="booleans.category.content">
-					<span class="w-[50px] aspect-square grid place-content-center link-form-start cursor-pointer"
+					<button tabindex="0" class="w-[50px] aspect-square grid place-content-center link-form-start cursor-pointer"
 						@click="booleans.change('text')" :class="booleans.data.text ? 'active' : ''">
 						<svg viewBox="0 0 26 26" class="w-[20px] aspect-square fill-[#636e72]">
 							<use href="#keyboard"></use>
 						</svg>
-					</span>
+					</button>
 
-					<span
+					<button tabindex="0"
 						class="w-[50px] aspect-square grid place-content-center link-form-start cursor-pointer border-solid border-l-2"
 						:class="booleans.data.dropzone ? 'active' : ''" @click="booleans.change('dropzone')">
 						<svg viewBox="0 0 26 26" class="w-[20px] aspect-square fill-[#636e72]">
 							<use href="#upload"></use>
 						</svg>
-					</span>
+					</button>
 
-					<span
+					<button tabindex="0"
 						class="w-[50px] aspect-square grid place-content-center link-form-start cursor-pointer border-solid border-l-2"
 						:class="booleans.data.preview ? 'active' : ''" @click="booleans.change('preview')">
 						<svg viewBox="0 0 26 26" class="w-[20px] aspect-square fill-[#636e72]">
 							<use href="#analyze"></use>
 						</svg>
-					</span>
+					</button>
 				</nav>
 
 			</article>
@@ -69,13 +69,13 @@
 			v-if="booleans.category.metadata">
 			<div class="gap-5 grid-container">
 
-				<input v-model="ime.title" class="px-3 md:px-4 py-3" type="text" name="title" placeholder="*Title of the Note"
+				<input v-model="storeNotes.currentNote.title" class="px-3 md:px-4 py-3" type="text" name="title" placeholder="*Title of the Note"
 					title="Enter the title of the note" required>
-				<input v-model="ime.image" class="px-3 md:px-4 py-3" type="text" name="image" placeholder="Featured Image (URL)"
+				<input v-model="storeNotes.currentNote.image" class="px-3 md:px-4 py-3" type="text" name="image" placeholder="Featured Image (URL)"
 					title="Optional. Add cover image URL here">
-				<input v-model="ime.tags" class="px-3 md:px-4 py-3" type="text" name="tags" placeholder="*Tags-comma separated"
+				<input v-model="storeNotes.currentNote.tags" class="px-3 md:px-4 py-3" type="text" name="tags" placeholder="*Tags-comma separated"
 					title="Add tags about the article example-(painting,micheangelo)" required>
-				<input v-model="ime.categories" class="px-3 md:px-4 py-3" type="text" name="categories"
+				<input v-model="storeNotes.currentNote.categories" class="px-3 md:px-4 py-3" type="text" name="categories"
 					placeholder="*Categories-comma separated"
 					title="Add the categor(y/ies) of life this article falls under. Usually less specific than tags example-(arts)"
 					required>
@@ -83,7 +83,7 @@
 			</div>
 
 
-			<textarea v-model="ime.excerpt" name="excerpt" class="resize-y min-h-[150px] px-3 md:px-4 py-3"
+			<textarea v-model="storeNotes.currentNote.excerpt" name="excerpt" class="resize-y min-h-[150px] px-3 md:px-4 py-3"
 				placeholder="*Excerpt" required></textarea>
 
 
@@ -103,7 +103,8 @@
 		</section>
 
 
-		<Dialog text="Save this note?" :d="confirmDialog" @no="confirmDialog=false" @yes="" />
+		<Dialog text="Save this note?" :d="confirmDialog" @no="confirmDialog=false" 
+			@yes="createNote" />
 	</main>
 </template>
 
@@ -112,14 +113,12 @@ import Textarea from "../../components/create/Textarea.vue";
 import Dropzone from "../../components/create/Dropzone.vue";
 import Preview from "../../components/create/Preview.vue";
 import Dialog from "../../components/utilities/Dialog.vue";
-import { checkMetadata } from "../../composables/create";
+import { zNote } from "../../composables/z";
 import { useNotes } from "../../stores/note";
-import { watch } from "vue";
+import { useToast } from "../../stores/toast";
 import { asyncLoad } from "../../composables/toast";
-import { zMetadata } from "../../composables/z";
+import { genRandomString, saveNote } from "../../composables/note";
 const storeNotes = useNotes()
-const inputFile = $ref(null as unknown as HTMLInputElement)
-
 const booleans = $ref({
 	data: {
 		text: false,
@@ -147,25 +146,20 @@ const booleans = $ref({
 		})
 	},
 })
-
-
-const toPreview = () => booleans.change('preview');
-
-
-// IME short of Initial Metadata Elements to get the most updated data from the form
-const ime = $ref({
-	title: '',
-	categories: '',
-	excerpt: '',
-	image: '',
-	tags: ''
-})
-
-
+useToast().stopLoad()
 let confirmDialog = $ref(false)
+const toPreview = () => booleans.change('preview');
+const createNote = async () => {
+	try {
+		confirmDialog = false
+		await asyncLoad(async() => saveNote(storeNotes.currentNote), 'saving your note');
+		const toast = useToast()
+		toast.message('saved')
+	}
+	catch(e) {}
 
 
-
+}
 const categories = {
 
 	toMetadata() {
@@ -175,29 +169,28 @@ const categories = {
 	},
 
 	async toContent() {
-
-		await asyncLoad(async () => {
-			const metadata = await zMetadata.parseAsync(ime)
-			storeNotes.storeMetadata(metadata)
-			console.log(metadata)
-			booleans.changeCategory('content')
-			booleans.change('text')
-		})
-
-
+		try {
+			const result = zNote.strict().safeParse(storeNotes.currentNote);
+			genRandomString()
+			if (!result.success) {throw Error('invalid metadata')}
+			storeNotes.storeCurrentNote();
+			booleans.changeCategory('content');
+			booleans.change('text');
+		}
+		catch(e) {
+			useToast().message(String(e))
+		}
 
 	},
+			
 
 
 	confirm() {
 		confirmDialog = true
-	}
+	},
 
 
 }
-
-
-// const dialogConfirm
 
 </script>
 

@@ -2,6 +2,7 @@
 import Header from './components/Header.vue';
 import Vectors from './components/Vectors.vue';
 import Toast from './components/utilities/Toast.vue';
+import Loader from './components/utilities/Loader.vue';
 import { checkUser } from './composables/auth';
 
 // Helps to track whether user is logged in or not
@@ -18,6 +19,7 @@ checkUser()
 
 		<Teleport to="#app">
 			<Toast />
+			<Loader />
 		</Teleport>
 
 	</div>
