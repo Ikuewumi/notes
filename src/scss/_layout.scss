@@ -1,0 +1,8 @@
+// Styles for any card list shown on any page
+*[data-card-list] {
+    --_card-width: var(--card-width, 350px);
+    --_gap: var(--gap, var(--p-1));
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--_card-width)), 1fr);
+    gap: var(--_gap)
+}

@@ -1,0 +1,149 @@
+// TODO: Convert this to @font-face and locally host these fonts
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Sketch&family=Londrina+Solid:wght@400;900&family=Schibsted+Grotesk:ital@0;1&display=swap');
+
+
+$mqSize: 850px;
+
+
+:root {
+    --blackHsl: 0, 0%, 0%;
+    --whiteHsl: 0, 0%, 100%;
+    
+    --darkGrayHsl: 0, 0%, 48%;
+    --lightGrayHsl: 0, 0%, 98%;
+    --grayHsl: 0, 0%, 96%;
+    
+    --blueHsl: 197, 37%, 24%;
+    --greenHsl: 173, 58%, 39%;
+    --yellowHsl: 43, 74%, 66%;
+    --orangeHsl: 27, 87%, 67%;
+    --redHsl: 12, 76%, 61%;
+
+
+    --black: hsl(var(--blackHsl));
+    --white: hsl(var(--whiteHsl));
+
+    --darkGray: hsl(var(--darkGrayHsl));
+    --lightGray: hsl(var(--lightGrayHsl));
+    --gray: hsl(var(--grayHsl));
+    
+    --blue: hsl(var(--blueHsl));
+    --green: hsl(var(--greenHsl));
+    --yellow: hsl(var(--yellowHsl));
+    --orange: hsl(var(--orangeHsl));
+    --red: hsl(var(--redHsl));
+
+
+    --size-4: 5rem;
+    --size-3: 3rem;
+    --size-2: 2rem;
+    --size-1: 1rem;
+    --size-0: 0.8rem;
+    
+    
+
+    --p-6: 2rem;
+    --p-5: 1.75rem;
+    --p-4: 1.5rem;
+    --p-3: 1.25rem;
+    --p-2: 1rem;
+    --p-1: 0.75rem;
+    --p-0: 0.5rem;
+    --p: 0.2rem;
+
+
+
+
+    --custom-font: 'Schibsted Grotesk', 'Poppins', 'Literata', sans-serif;
+    --heading-font: 'Londrina Solid', sans-serif;
+    --stroke-font: 'Londrina Sketch', sans-serif;
+
+
+
+    
+    font-size: 20px;
+    
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+
+
+
+body {
+    font-size: 1rem;
+    font-family: var(--custom-font);
+    min-height: 100vh;
+    background: var(--lightGray);
+    color: var(--black);
+}
+
+
+img, svg, picture,
+figure {
+    max-width: 100%;
+}
+
+p {
+    line-height: 1.6;
+}
+
+
+.flex-flow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+
+.grid-flow {
+    display: grid;
+    gap: 1rem;
+}
+
+.contents {
+    display: contents;
+}
+
+
+
+.sg {
+
+    --col-count: 6;
+    --col-width: 10rem;
+    display: grid;
+    grid-template-columns: 
+        minmax(2rem, 1fr) 
+        repeat(var(--col-count), minmax(0, var(--col-width)))
+        minmax(2rem, 1fr);
+
+
+
+
+    & > * {
+        grid-column: 2 / -2;
+    }
+
+
+
+
+    @media (min-width: $mqSize) {
+        &.two { --col-number: calc(var(--col-count, 6) / 2); }
+        &.three { --col-number: calc(var(--col-count, 6) / 3); }
+        &.cols {
+            & > * {grid-column: span var(--col-number);}
+            & > *:first-child {grid-column: var(--col-start, 2) / span var(--col-number);}
+            & > *:last-child {grid-column: span var(--col-number) / calc(var(--col-start, 2) * -1);}
+        }
+    }
+
+}
+
