@@ -121,9 +121,9 @@ p {
     --col-width: 10rem;
     display: grid;
     grid-template-columns: 
-        minmax(2rem, 1fr) 
+        minmax(0.75rem, 1fr) 
         repeat(var(--col-count), minmax(0, var(--col-width)))
-        minmax(2rem, 1fr);
+        minmax(0.75rem, 1fr);
 
 
 

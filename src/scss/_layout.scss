@@ -1,8 +1,10 @@
 // Styles for any card list shown on any page
 *[data-card-list] {
-    --_card-width: var(--card-width, 350px);
+    --_card-width: var(--card-width, 300px);
     --_gap: var(--gap, var(--p-1));
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--_card-width)), 1fr);
-    gap: var(--_gap)
+    place-items: center;
+    place-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(var(--_card-width), 1fr));
+    gap: var(--_gap);
 }

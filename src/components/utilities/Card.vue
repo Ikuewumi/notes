@@ -1,7 +1,9 @@
 <template>
     <section class="grid-flow" data-card>
 
-        <img :src="cardData.imageUrl" :alt="cardData.title">
+        <div class="image">
+            <img :src="cardData.imageUrl" :alt="cardData.title">
+        </div>
         <div class="content grid-flow">
             <RouterLink :to="cardData.link">{{ cardData.title }}</RouterLink>
             <p>{{ cardData.excerpt }}</p>
@@ -31,6 +33,9 @@ const cardData = {
     
     background: var(--white);
     box-shadow: 0 0 3px -1px hsla(var(--blackHsl), 0.6);
+
+    transition: 200ms ease;
+
     
     border-radius: var(--p);
     overflow: hidden;
@@ -48,9 +53,54 @@ const cardData = {
     img {
         object-position: center;
         object-fit: cover;
+        transition: transform 200ms ease-in;
+    }
+
+    .image, img {
 
         height: 150px;
         width: 100%;
+
+    }
+
+    .image {
+        overflow: hidden;
+        position: relative;
+        isolation: isolate;
+
+
+
+        &:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: hsla(var(--blackHsl), 0.2);
+            z-index: 4;
+            transition: 200ms ease;
+        }
+    }    
+
+
+    &:hover {
+        box-shadow: 0 3px 20px -1px hsla(var(--blackHsl), 0.4);
+        transform: translateY(-3px);
+    }
+
+    
+    &:hover, &:focus-within {
+
+
+
+        .image {
+            &:before {
+                background: hsla(var(--blackHsl), 0.1);
+            }
+            // background-blend-mode: exclusion;
+        }
+
+        img {
+            transform: scale(1.2);
+        }
     }
 
     .content {
