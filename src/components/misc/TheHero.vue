@@ -30,9 +30,14 @@ const heroData = {
     place-items: center;
     text-align: center;
     line-height: 1;
-    padding-block: var(--p-4);
+    padding-block: var(--p-1) var(--p-4);
+    isolation: isolate;
 
     --words-height: calc(var(--size-3) * 1.25);
+
+    * {
+        z-index: -1;
+    }
 
     h2 {
         max-width: 700px;

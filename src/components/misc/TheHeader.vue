@@ -64,6 +64,8 @@ header#header {
 
     font-family: var(--heading-font);
 
+    z-index: 2;
+
 
     --mobile-icon-size: calc(var(--size-1) * 1.25);
 
@@ -137,7 +139,10 @@ header#header {
         flex-direction: row;
         gap: calc(var(--p-2) * 1) var(--p-2);
         padding: var(--p-3) 0.75rem;
+        padding-block-start: var(--p-2);
         justify-content: center;
+        background: var(--white);
+        box-shadow: 0 2px 3px -1px hsla(var(--blackHsl), 0.07);
 
 
         li {

@@ -35,6 +35,7 @@ const cardData = {
     box-shadow: 0 0 3px -1px hsla(var(--blackHsl), 0.6);
 
     transition: 200ms ease;
+    z-index: 3;
 
     
     border-radius: var(--p);
