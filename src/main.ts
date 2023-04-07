@@ -12,9 +12,11 @@ app.component('FontAwesome', FontAwesomeIcon)
 app.use(router)
 
 
-app.config.errorHandler = (err, instance, info) => {
-    // console.error(info)
-}
+
+// TODO: Implement global Error Handler
+// app.config.errorHandler = (err, instance, info) => {
+//     // console.error(info)
+// }
 
 
 app.mount('#app')
