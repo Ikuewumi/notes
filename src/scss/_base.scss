@@ -113,6 +113,23 @@ p {
     display: contents;
 }
 
+.hidden {
+    display: none;
+}
+
+.blue {
+    color: var(--blue);
+}
+
+.heading-text {
+    font-family: var(--heading-font);
+    color: var(--blue);
+}
+
+.outline-text {
+    font-family: var(--stroke-font);
+    color: var(--blue);
+}
 
 
 .sg {
@@ -136,6 +153,7 @@ p {
 
 
     @media (min-width: $mqSize) {
+
         &.two { --col-number: calc(var(--col-count, 6) / 2); }
         &.three { --col-number: calc(var(--col-count, 6) / 3); }
         &.cols {
@@ -145,5 +163,14 @@ p {
         }
     }
 
+
+
+
 }
+
+
+
+
+
+
 

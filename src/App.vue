@@ -1,5 +1,7 @@
 <template>
-  <RouterView />
+  <main class="sg">
+    <RouterView />
+  </main>
 </template>
 
 <script lang="ts" setup>

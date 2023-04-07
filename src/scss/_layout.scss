@@ -8,3 +8,18 @@
     grid-template-columns: repeat(auto-fit, minmax(var(--_card-width), 1fr));
     gap: var(--_gap);
 }
+
+[data-page] {
+    & > * {
+        grid-column: 2 / -2;
+    }
+}
+
+
+// Stylings for headings of pages 
+
+h1 {
+    font-family: var(--heading-font);
+    font-size: var(--size-3);
+    color: var(--blue);
+}

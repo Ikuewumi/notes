@@ -1,5 +1,5 @@
 <template>
-<div class="contents">
+<div class="contents" data-page-home>
 
     <TheHero />
     <div class="sg">
@@ -24,6 +24,13 @@ import Card from "../components/utilities/Card.vue";
 </script>
 
 <style lang="scss">
+
+
+[data-page-home].contents {
+    & > * {
+        grid-column: 1 / -1;
+    }
+}
 
 
 
