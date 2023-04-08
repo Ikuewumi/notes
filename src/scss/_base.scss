@@ -8,12 +8,6 @@ $mqSize: 850px;
 :root {
     --blackHsl: 0, 0%, 0%;
     --whiteHsl: 0, 0%, 100%;
-
-
-    @media(prefers-color-scheme: dark) {
-        --blackHsl: 0, 0%, 100%;
-        --whiteHsl: 0, 0%, 0%;
-    }
     
     --darkGrayHsl: 0, 0%, 48%;
     --lightGrayHsl: 0, 0%, 98%;
