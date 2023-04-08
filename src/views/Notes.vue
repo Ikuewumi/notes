@@ -1,8 +1,8 @@
 <template>
     <div class="contents" data-page-notes data-page>
         <section data-w-subgrid class="grid-flow">
-            <h1>Archive</h1>
-            <p>Here, you'll find a collection of informative, quick notes on various medical topics</p>
+            <h1>Notes</h1>
+            <p>Here, you'll find a collection of informative, quick notes on various medical topics. <router-link to="/">Find Series Here</router-link></p>
         </section>
 
         <div data-w-subgrid data-filters class="flex-flow">
@@ -46,8 +46,24 @@ import Card from '../components/utilities/Card.vue';
 @use "../scss/base" as *;
 [data-page-notes].contents {
     & > section:first-of-type {
-        // grid-column: 2 / -2;
+        padding-block: var(--p-2) 0;
         gap: var(--p);
+
+        
+        a {
+            color: hsla(var(--blueHsl), 0.7);
+            text-transform: uppercase;
+            font-family: var(--heading-font);
+            transition: 200ms ease;
+            
+            &:focus {
+                outline: 1px dotted var(--blue);
+            }
+            
+            &:hover, &:focus {
+                color: hsla(var(--blueHsl), 1);
+            }
+        }
 
         @media (max-width: $mqSize) {
             * {
@@ -56,6 +72,8 @@ import Card from '../components/utilities/Card.vue';
             }
         }
     }
+
+
 
     
 
@@ -69,10 +87,16 @@ import Card from '../components/utilities/Card.vue';
 
         }
     }
-
-
+    
+    
     div[data-nav-categories] {
         gap: calc(3 * var(--p));
+        justify-content: center;
+
+
+        @media(min-width: $mqSize) {
+            justify-content: start;
+        }
 
 
         button {

@@ -8,6 +8,12 @@ $mqSize: 850px;
 :root {
     --blackHsl: 0, 0%, 0%;
     --whiteHsl: 0, 0%, 100%;
+
+
+    @media(prefers-color-scheme: dark) {
+        --blackHsl: 0, 0%, 100%;
+        --whiteHsl: 0, 0%, 0%;
+    }
     
     --darkGrayHsl: 0, 0%, 48%;
     --lightGrayHsl: 0, 0%, 98%;
@@ -54,6 +60,8 @@ $mqSize: 850px;
 
 
 
+    // TODO: Look into another font for the headings
+
     --custom-font: 'Schibsted Grotesk', 'Poppins', 'Literata', sans-serif;
     --heading-font: 'Londrina Solid', sans-serif;
     --stroke-font: 'Londrina Sketch', sans-serif;
@@ -62,6 +70,7 @@ $mqSize: 850px;
 
     
     font-size: 20px;
+    scroll-behavior: smooth;
     
 }
 
@@ -72,6 +81,7 @@ $mqSize: 850px;
     padding: 0;
     box-sizing: border-box;
     font: inherit;
+    word-break: break-all;
 }
 
 
