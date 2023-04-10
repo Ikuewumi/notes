@@ -6,6 +6,7 @@ Today, we will be talking about the general anatomy, histology, function, neurov
 
 # General Anatomy
 ![stomach highlighted in red](https://upload.wikimedia.org/wikipedia/commons/f/f7/Tractus_intestinalis_ventriculus.svg)
+
 The stomach is a J-shaped hollow organ that is responsible for storing and mixing food. Its location varies in different people based on the tonicity of the stomach, but typically it is found in the hypogastric and umbilical regions. It is usually located in the left upper quadrant. It is bounded superiorly by the diaphragm and to the right by the liver, to the left by the spleen, posteriorly by the pancreas, right kidney. It is distal to the esophagus and enters into the small intestine (specifically, the duodenum). The stomach is about about 1 - 1.5l, but can get as large as 3l to accommodate food. The inner surface when non-distended usually has a lot of tiny folds called **rugae**. It is made of _4 parts_ and _2 sphincters_
 
 ## Parts
@@ -55,6 +56,7 @@ The stomach has two sphincters at both entrances. They are:
 # Histology
 
 ![histology of stomach](https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Anatomytool_Muscles_of_stomach_-_English.jpg/708px-Anatomytool_Muscles_of_stomach_-_English.jpg)
+
 
 Like most of the gastrointestinal tract, the layers of the esophagus are divided into 4. From the superficial to deep:
 

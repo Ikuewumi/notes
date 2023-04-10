@@ -8,7 +8,7 @@
 
                 <div data-logo class="flex-flow">
                     <FontAwesome icon="notes-medical"/>
-                    <strong class="heading-text">mednotes</strong>
+                    <strong class="heading-text">medlite</strong>
                 </div>
             
             
@@ -23,7 +23,7 @@
                 </nav>
 
 
-                <nav class="flex-flow" data-header-mobile-nav>
+                <nav class="flex-flow" data-header-mobile-nav aria-hidden>
                     <ul class="contents">
                         <li>home</li>
                         <li>notes</li>
@@ -136,8 +136,9 @@ header#header {
         inset: auto 0 0 0;
         transform: translate(0, 100%);
         background: hsla(var(--blueHsl), 0.2);
-        flex-direction: row;
+        flex-direction: column;
         gap: calc(var(--p-2) * 1) var(--p-2);
+        gap: 0;
         padding: var(--p-3) 0.75rem;
         padding-block-start: var(--p-2);
         justify-content: center;
@@ -146,7 +147,7 @@ header#header {
 
 
         li {
-            padding: var(--p) var(--p-2);
+            padding: calc(var(--p) * 2) var(--p-2);
             transition: 200ms;
 
 
@@ -158,6 +159,10 @@ header#header {
         }
 
 
+
+        li + li {
+            border-top: 1px solid hsla(var(--blueHsl), 0.3);
+        }
         
 
 
@@ -264,6 +269,7 @@ header#header {
         flex-basis: 100%;
         padding: calc(var(--p) * 3) var(--p-4);
         text-transform: uppercase;
+        margin-block-start: var(--p-2);
 
         
         @media (min-width: $mqSize) {
