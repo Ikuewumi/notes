@@ -1,4 +1,5 @@
 import { marked } from "marked"
+import sanitize from "sanitize-html"
 import { z } from "zod"
 export const sampleMd = `
 # Introduction
@@ -126,6 +127,11 @@ By far, the most important function of the stomach in the gastrointestinal tract
 
 `
 
+
+// COnfiguring Marked
+marked.setOptions({
+	"sanitizer": (text) => sanitize(text)
+})
 
 
 

@@ -15,6 +15,7 @@
     "@types/sanitize-html": "^2.9.0",
     "firebase": "^9.19.1",
     "gsap": "^3.11.3",
+    "lit": "^2.4.1",
     "marked": "^4.3.0",
     "pinia": "^2.0.33",
     "sanitize-html": "^2.10.0",

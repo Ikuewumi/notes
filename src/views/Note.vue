@@ -29,7 +29,6 @@
 
 
         <section v-html="sampleText" data-note-content class="grid-flow">
-
         </section>
 
 
@@ -87,9 +86,10 @@ mdToHtml().then(str => sampleText = str)
 
     h1 {
         align-self: center;
-        max-width: min(700px, calc(100vw - (2 * 0.75rem)));
+        max-width: min(700px, calc(100vw - (2 * 0.15rem)));
         margin-inline: auto;
         z-index: 3;
+        text-wrap: balance;
         text-align: center;
         color: var(--white);
         text-shadow: 2px 0 3px hsla(var(--blackHsl), 1);
@@ -99,15 +99,13 @@ mdToHtml().then(str => sampleText = str)
 
 
         @media (min-width: $mqSize) {
-            font-size: clamp(var(--size-2), var(--size-3)* 1.5, var(--size-4));
-        }
-
-
-        &:hover {
-
+            font-size: clamp(var(--size-1), var(--size-3)* 1.2, var(--size-4));
         }
     }
 }
+
+
+
 
 
 [data-note-info] {
@@ -154,26 +152,61 @@ mdToHtml().then(str => sampleText = str)
                 font-size: 80%;
             }
         }
-
-        img {
-
+        [data-note-info-image] {
             --_dimension: var(--dimension, 50px);
-            width: var(--_dimension);
-            object-fit: cover;
-            object-position: top center;
-            height: var(--_dimension);
-            aspect-ratio: 1 / 1;
-            border-radius: 50%;
-            transition: 300ms ease-out;
-            transform-origin: top-left;
-            cursor: pointer;
+            overflow: hidden;
+            isolation: isolate;
 
-            &:hover {
-                transform: scale(1.5);
+
+            position: relative;
+
+
+            &:before {
+                position: absolute;
+                content: '';
+                inset: 0;
+                border-radius: inherit;
+                z-index: 2;
+                background: #00000020;
+                pointer-events: none;
+                transform-origin: top-left;
+                transition: 300ms ease;
+
             }
 
 
+
+            &, img {
+                width: var(--_dimension);
+                height: var(--_dimension);
+                aspect-ratio: 1 / 1;
+                border-radius: 50%;
+            }
+            
+            
+            img {
+                object-fit: cover;
+                object-position: top center;
+                border-radius: 50%;
+                transition: 300ms ease-out;
+                cursor: pointer;
+            }
+
+
+
+
+            &:hover, &:focus{
+                &::before {
+                    transform: scaleY(0);
+                    background: transparent;
+                }
+
+                img {
+                    transform: scale(1.25);
+                }
+            }
         }
+
 
 
         svg {
@@ -222,8 +255,20 @@ mdToHtml().then(str => sampleText = str)
     padding-block: var(--p-1);
     border-radius: var(--p);
     grid-column: 1 / -1;
+
+
+    * {
+        line-height: 1.45;
+    }
+    
+    // Lists
     ul, ol, dl {
         list-style: inside;
+
+
+        li {
+
+        }
     }
 
     & > ul, & > ol, & > dl {
@@ -233,9 +278,38 @@ mdToHtml().then(str => sampleText = str)
     }
 
     ol {
-        list-style:decimal inside;
+        list-style: decimal inside;
     }
 
+
+
+    // Headings
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--heading-font);
+        color: var(--_clr, hsla(var(--blueHsl), 0.9));
+        line-height: 0.95;
+    }
+
+    h1 {font-size: clamp(var(--size-1), var(--size-2)* 1.25, var(--size-3));}
+    h2 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 1.75));}
+    h3 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 1.5));}
+    h4 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 1.25));}
+    h5 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 1));}
+    h6 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 0.9));}
+
+
+    * + h1 {
+        margin-block-start: var(--p-4);
+    }
+
+    h1 {
+        text-decoration: underline;
+        color: hsla(var(--blueHsl), 0.8);
+        transition: 250ms ease;
+        &:hover {
+            color: hsla(var(--blueHsl), 1);
+        }
+    }
 
 
     @media(min-width: $mqSize) {
