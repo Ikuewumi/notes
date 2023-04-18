@@ -12,7 +12,7 @@
             
             <div data-note-info-field class="flex-flow">
                 <router-link data-note-info-image to="/"><img src="/dummy/001.png" alt="Jake Stokolvic" /></router-link>
-                <strong class="heading-text"><router-link to="/">Jake Stokolvic</router-link> <span>on 12th February, 2023</span></strong> 
+                <strong class="heading-text"><router-link to="/">Jake Stokolvic</router-link> <span>on 12/02/2023</span></strong> 
             </div>
 
             <div data-note-info-field class="flex-flow">
@@ -126,7 +126,7 @@ mdToHtml().then(str => sampleText = str)
 
 
         strong {
-            letter-spacing: 1px;
+            //letter-spacing: -2px;
             a {
                 color: hsla(var(--blueHsl), 0.7);
                 text-decoration: none;
@@ -148,7 +148,7 @@ mdToHtml().then(str => sampleText = str)
             
             span {
                 font-family: var(--custom-font);
-                letter-spacing: -1px;
+                //letter-spacing: -1px;
                 font-size: 80%;
             }
         }
@@ -256,14 +256,25 @@ mdToHtml().then(str => sampleText = str)
     border-radius: var(--p);
     grid-column: 1 / -1;
 
+    @media (max-width: $mqSize) {
+        overflow: hidden;
+    }
+
 
     * {
-        line-height: 1.45;
+        line-height: 1.6;
+
+        @media(min-width: $mqSize) {
+            line-height: 1.45;
+
+        }
     }
     
     // Lists
     ul, ol, dl {
         list-style: inside;
+        display: grid;
+        gap: calc(var(--size-1) * 0.25);
 
 
         li {
@@ -283,19 +294,46 @@ mdToHtml().then(str => sampleText = str)
 
 
 
+
+
     // Headings
     h1, h2, h3, h4, h5, h6 {
         font-family: var(--heading-font);
         color: var(--_clr, hsla(var(--blueHsl), 0.9));
         line-height: 0.95;
+        //letter-spacing: -4px;
+        //background-color: var(--blue);
+        //color: var(--white);
+        //position: sticky;
+        //inset: 0 auto auto auto;
+        //height: 50px;
     }
 
-    h1 {font-size: clamp(var(--size-1), var(--size-2)* 1.25, var(--size-3));}
-    h2 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 1.75));}
-    h3 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 1.5));}
-    h4 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 1.25));}
-    h5 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 1));}
-    h6 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 0.9));}
+    h1 {font-size: clamp(var(--size-1), var(--size-2)* 1.25, calc(var(--size-2) * 1.5));}
+    h2 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 1.25));}
+    h3 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 1));}
+    h4 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 0.75));}
+    h5 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 0.5));}
+    h6 {font-size: clamp(var(--size-1), var(--size-2)* 1, calc(var(--size-2) * 0.25));}
+
+    @media (max-width: $mqSize) {
+        h1 {font-size:calc(var(--size-2) * 1.25);}
+        h2 {font-size:calc(var(--size-2) * 1);}
+        h3 {font-size:calc(var(--size-2) * 0.95);}
+        h4 {font-size:calc(var(--size-2) * 0.75);}
+        h5 {font-size:calc(var(--size-2) * 0.5);}
+        h6 {font-size:calc(var(--size-2) * 0.45);}        
+    }
+
+
+
+    //Blockquote 
+    blockquote {
+        padding: var(--p-1) var(--p-2);
+        border-left: 4px solid var(--blue);
+        background: hsla(var(--blueHsl), 0.1);
+        border-radius: calc(var(--size-1) * 0.25);
+    }
 
 
     * + h1 {

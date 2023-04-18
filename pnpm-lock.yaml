@@ -16,6 +16,7 @@ specifiers:
   marked: ^4.3.0
   pinia: ^2.0.33
   sanitize-html: ^2.10.0
+  sanity-blocks-vue-component: ^1.0.1
   sass: ^1.60.0
   typescript: ^4.9.3
   vite: ^4.2.0
@@ -36,6 +37,7 @@ dependencies:
   marked: 4.3.0
   pinia: 2.0.33_hmuptsblhheur2tugfgucj7gc4
   sanitize-html: 2.10.0
+  sanity-blocks-vue-component: 1.0.1
   vue: 3.2.47
   vue-router: 4.1.6_vue@3.2.47
   zod: 3.21.4
@@ -1546,6 +1548,10 @@ packages:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
     dev: false
 
+  /lodash.merge/4.6.2:
+    resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+    dev: false
+
   /long/4.0.0:
     resolution: {integrity: sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==}
     dev: false
@@ -1790,6 +1796,13 @@ packages:
       is-plain-object: 5.0.0
       parse-srcset: 1.0.2
       postcss: 8.4.21
+    dev: false
+
+  /sanity-blocks-vue-component/1.0.1:
+    resolution: {integrity: sha512-ba59NoGz3NENuIIAKMtjg/JWoyQVpHccanyenEVrT0A1cr3t1/75tUX9XSBMUUe6QyKEedjjJeO6KtNbEzeBRQ==}
+    dependencies:
+      lodash.merge: 4.6.2
+      vue: 3.2.47
     dev: false
 
   /sass/1.60.0:

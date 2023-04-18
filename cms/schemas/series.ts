@@ -1,4 +1,4 @@
-import {Rule} from "sanity"
+import { SchemaTypeDefinition} from "sanity"
 
 export default {
     name: 'series',
@@ -9,7 +9,7 @@ export default {
         name: 'title',
         title: 'Title',
         type: 'string',
-        validation: Rule => Rule.required().max(100)
+        validation: (Rule) => Rule.required().max(100)
       },
       {
         name: 'slug',
@@ -19,20 +19,20 @@ export default {
           source: 'title',
           maxLength: 96
         },
-        validation: Rule => Rule.required()
+        validation: (Rule) => Rule.required()
       },
       {
         name: 'coverImage',
         title: 'Cover Image',
         type: 'image',
-        validation: Rule => Rule.required()
+        validation: (Rule) => Rule.required()
       },
       {
         name: 'description',
         title: 'Description',
         type: 'text',
         rows: 2,
-        validation: Rule => Rule.required().max(250)
+        validation: (Rule) => Rule.required().max(250)
       },
       {
         name: 'blogs',
@@ -41,4 +41,4 @@ export default {
         of: [{ type: 'reference', to: [{ type: 'blog' }] }]
       }
     ]
-  }
+} as SchemaTypeDefinition

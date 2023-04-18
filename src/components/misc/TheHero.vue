@@ -30,7 +30,7 @@ const heroData = {
     place-items: center;
     text-align: center;
     line-height: 1;
-    padding-block: var(--p-1) var(--p-5);
+    padding-block: var(--p-4) calc(var(--p-5) * 2);
     isolation: isolate;
 
     --words-height: calc(var(--size-3) * 1.25);
@@ -44,6 +44,7 @@ const heroData = {
         font-family: var(--heading-font);
         font-size: var(--words-height);
         color: var(--blue);
+        //letter-spacing: -4px;
     }
 
 

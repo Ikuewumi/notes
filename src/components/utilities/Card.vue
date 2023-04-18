@@ -119,6 +119,7 @@ const cardData = {
         text-decoration: none;
         color: hsla(var(--blueHsl), 0.8);
         transition: color 200ms ease-out;
+        //letter-spacing: -3px;
 
         
         &:hover {

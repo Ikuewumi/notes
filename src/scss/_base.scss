@@ -1,8 +1,6 @@
 // TODO: Convert this to @font-face and locally host these fonts
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Sketch&family=Londrina+Solid:wght@400;900&family=Schibsted+Grotesk:ital@0;1&display=swap');
-
-
-$mqSize: 850px;
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Sketch&family=Londrina+Solid:wght@300;400&family=Manrope:wght@400;700;800&family=Noto+Color+Emoji&display=swap');
+$mqSize: 800px;
 
 
 :root {
@@ -56,15 +54,20 @@ $mqSize: 850px;
 
     // TODO: Look into another font for the headings
 
-    --custom-font: 'Schibsted Grotesk', 'Poppins', 'Literata', sans-serif;
-    --heading-font: 'Londrina Solid', sans-serif;
-    --stroke-font: 'Londrina Sketch', sans-serif;
+    --custom-font: 'Manrope', 'Poppins', 'Literata', 'Noto Color Emoji', sans-serif;
+    --heading-font: 'Londrina Solid', 'Noto Color Emoji', sans-serif;
+    --stroke-font: 'Londrina Sketch', 'Noto Color Emoji', sans-serif;
 
 
 
-    
-    font-size: 20px;
     scroll-behavior: smooth;
+    
+    font-size: 15px;
+    
+    
+    @media (min-width: $mqSize) {
+        font-size: 17.6px;
+    }
     
 }
 
@@ -77,6 +80,18 @@ $mqSize: 850px;
     font: inherit;
     word-wrap: break-word;
     hyphens: auto;
+
+
+    @media print {
+        orphans: 3;
+    }
+}
+
+h1 {
+    // letter-spacing: -4px;
+    // word-wrap: break-word;
+    // break-inside: auto;
+    // word-break: break-all;
 }
 
 
@@ -97,7 +112,15 @@ figure {
 }
 
 p {
-    line-height: 1.6;
+    line-height: 1.2;
+}
+
+
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: 200ms ease;
 }
 
 

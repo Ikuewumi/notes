@@ -1,4 +1,4 @@
-import { Rule, RuleClass } from "sanity"
+import { Rule, SchemaTypeDefinition } from "sanity"
 
 
 export default {
@@ -10,13 +10,13 @@ export default {
         name: 'name',
         title: 'Name',
         type: 'string',
-        validation: Rule => Rule.required()
+        validation: (Rule:Rule) => Rule.required()
       },
       {
         name: 'email',
         title: 'Email',
         type: 'string',
-        validation: Rule => Rule.required().email()
+        validation: (Rule:Rule) => Rule.required().email()
       },
       {
         name: 'avatar',
@@ -37,12 +37,18 @@ export default {
             { title: 'Reader', value: 'reader' }
           ]
         },
-        validation: Rule => Rule.required()
+        validation: (Rule:Rule) => Rule.required()
       },
       {
         name: 'bio',
         title: 'Bio',
         type: 'text'
+      },
+      {
+        name: 'bookmarks',
+        title: 'Bookmarks',
+        type: "array",
+        of: [{ type: 'reference', to: [{ type: 'blog' }] }]
       }
     ]
-}
+} as SchemaTypeDefinition

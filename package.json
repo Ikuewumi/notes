@@ -19,6 +19,7 @@
     "marked": "^4.3.0",
     "pinia": "^2.0.33",
     "sanitize-html": "^2.10.0",
+    "sanity-blocks-vue-component": "^1.0.1",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
     "zod": "^3.21.4"

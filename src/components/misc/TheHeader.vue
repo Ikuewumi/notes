@@ -2,12 +2,12 @@
         <header id="header" class="sg" :class="showMenu ? 'open' : ''">
             <div data-header-container>
                 <button data-hamburger title="Toggle Menu!" @click="showMenu = !showMenu">
-                    <FontAwesome icon="bars" />
+                    <Icon icon="bars" />
                 </button>
 
 
                 <div data-logo class="flex-flow">
-                    <FontAwesome icon="notes-medical"/>
+                    <Icon icon="notes-medical"/>
                     <strong class="heading-text">medlite</strong>
                 </div>
             
@@ -37,7 +37,7 @@
 
 
                 <div data-search class="flex-flow">
-                    <button title="search" data-header-search><FontAwesome icon="search" /></button>
+                    <button title="search" data-header-search><Icon icon="search" /></button>
                     <button data-header-login>Login</button>
                 </div>
             </div>
@@ -61,6 +61,11 @@ header#header {
     box-shadow: 0 2px 3px -1px hsla(var(--blackHsl), 0.07);
     position: sticky;
     inset: 0 auto auto auto;
+
+
+    * {
+        //letter-spacing: -1.5px;
+    }
 
     font-family: var(--heading-font);
 

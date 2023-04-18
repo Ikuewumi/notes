@@ -1,4 +1,4 @@
-import {Rule} from "sanity"
+import {SchemaTypeDefinition} from "sanity"
 
 export default {
     name: 'category',
@@ -15,6 +15,13 @@ export default {
         name: 'description',
         title: 'Description',
         type: 'text'
+      },
+      {
+        name: 'image',
+        title: 'Image',
+        type: 'image',
+        description: 'An image that captures the essence of this category. Optional, but recommended'
+
       }
     ]
-  }
+} as SchemaTypeDefinition
